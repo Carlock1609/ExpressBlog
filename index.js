@@ -1,9 +1,11 @@
 /**
  * Required External Modules
  */
+const {MongoClient} = require('mongodb');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+
 
 // Mongoose example
 // const Schema = mongoose.Schema;
@@ -21,18 +23,17 @@ const mongoose = require('mongoose');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/ExpressBlog', { 
+mongoose.connect('mongodb://localhost/MurderBeeTracker', { 
 													useNewUrlParser: true,
 													useUnifiedTopology: true,
 														});
 
 
-// let db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 /**
  *  App Configuration
  */
-
+// let MyModel = mongoose.model('Test', new SVG)
  
  
 /**
@@ -50,6 +51,8 @@ app.get('/user', (req,res) => {
 /**
  * Server Activation
  */
+
+
 const port = process.env.PORT || "8000";
 app.listen(port, () => {
     console.log('SERVER IS UP!');
