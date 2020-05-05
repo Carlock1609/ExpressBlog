@@ -6,20 +6,15 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+// importing models
+const User = require('./models/user');
+// importing routes
+const indexRoutes = require('./api/routes/index')
 
-// Mongoose example
-// const Schema = mongoose.Schema;
-// const BlogPost = new Schema({
-//     author: ObjectId,
-//     title: String,
-//     body: String,
-//     date: Date
-//   });
-/**
- * App Variables
- */
 // Let express know where to find templates
 // Lets express know what template engine we are using 'ejs'
+app.use(express.json()); //Used to parse JSON bodies
+app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -27,34 +22,23 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 													useNewUrlParser: true,
 													useUnifiedTopology: true,
 														});
-let db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-    // we're connected!
-});
 
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-/**
- *  App Configuration
- */
-// let MyModel = mongoose.model('Test', new SVG)
  
- 
-/**
- * Routes Definitions
- */
-app.get('/', (req,res) => {
-    res.render('home')
-});
+// SEEDING WORKS
+// User.create({username: 'Carlock', password: 'Yates906'}, function (err, createdUser) {
+//     if (err) {
+//         return handleError(err)
+//     } else {
+//         console.log(createdUser)
+//     }
+// })
 
-app.get('/user', (req,res) => {
-    res.render('userProfile')
-})
+// connecting route examples
+app.use('/', indexRoutes);
+// app.use('/campgrounds', campgroundRoutes);
+// app.use('/campgrounds/:id/comments', commentRoutes);
 
 
-/**
- * Server Activation
- */
 
 
 const port = process.env.PORT || "8000";
