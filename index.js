@@ -27,7 +27,11 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 													useNewUrlParser: true,
 													useUnifiedTopology: true,
 														});
-
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+    // we're connected!
+});
 
 // db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 /**
