@@ -16,8 +16,8 @@ const indexRoutes = require('./api/routes/index')
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
-
+// Sets base directory to look for static files
+app.use(express.static(__dirname + '/public')); 
 mongoose.connect('mongodb://localhost/MurderBeeTracker', { 
 													useNewUrlParser: true,
 													useUnifiedTopology: true,

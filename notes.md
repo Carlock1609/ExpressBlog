@@ -12,4 +12,5 @@ db.users.find({username: 'name})[0].password -> users password
     - Use Oauth to sign in and vericate, just like CLIQUE
 - Display Map even though user is not logged in.
     - Dont display option to mark on map
-    
+
+- Make navbar button animations on Pencode
