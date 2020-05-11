@@ -1,0 +1,26 @@
+
+.navbar {
+    background: rgba(65, 65, 65, 0.315);
+}
+
+#navLink {
+    border: 0px;
+    background: rgb(0,0,0,0);
+    color: black;
+    outline: none;
+}
+#navLink:hover {
+    transition: .5s;
+    color: black;
+}
+#navLink:active {
+    transform: translatey(-1px);
+}
+#navLink span {
+    opacity: 0;
+    transition: .5s;
+}
+#navLink:hover span {
+    padding-right: 20px;
+    opacity: 1;
+}
