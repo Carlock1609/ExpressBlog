@@ -8,7 +8,7 @@ router.get('/', function(req,res) {
     context = {
 
    }
-    res.render('base', context)
+    res.render('index', context)
 })
 
 

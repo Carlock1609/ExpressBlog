@@ -12,18 +12,11 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 //  FIGURE OUT IF THE REST NEEDS TO BE IN THE ROUTE TO SAVE THE MARKERS
 // OTHERWISE HAVE USERS INPUT DATA, THEN USE ANOTHER FUNCTION TO DISPLAY THAT DATA,
 // INSTEAD OF USING THE ONCLICK AND SAVING DATA
-
-let marker = L.marker([45.5051, -122.6750]).addTo(mymap);
-marker.bindPopup("MURDER HORNET SIGHTING").openPopup();
-
-
-// THIS DISPLAYS AN ALERT lets try to figure out how to take the latlng and make a marker instead
-let popup = L.popup();
-
 function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("Hornet Sight at " + e.latlng.toString())
-        .openOn(mymap);
+    let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+    let user_input = prompt('Please enter in a message');
+    // What if we display the Street or the city instead of latlng
+    marker.bindPopup(`${user_input} @ ` + e.latlng.toString()).openPopup();
+    // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
 }
 mymap.on('click', onMapClick);
