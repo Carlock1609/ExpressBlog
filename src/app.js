@@ -19,12 +19,13 @@ app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
 app.set('view engine', 'ejs');
 // Sets base directory to look for static files
 app.use(express.static(__dirname + '/public')); 
+// I think were going to want to change the name of DB, just come back to this when resetting
 mongoose.connect('mongodb://localhost/MurderBeeTracker', { 
 													useNewUrlParser: true,
 													useUnifiedTopology: true,
 														});
 
- 
+
 // SEEDING WORKS
 // User.create({username: 'Carlock', password: 'Yates906'}, function (err, createdUser) {
 //     if (err) {
@@ -33,20 +34,22 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 //         console.log(createdUser)
 //     }
 // })
-Marker.create(
-	{
-		lat: 2,
-		lng: 4,
-		note: 'Hornets here',
-		image: 'file_location',
-	}, function(err, createdMarker) {
-		if (err) {
-			return handleError(err);
-		} else {
-			console.log(createdMarker);
-		}
-	}
-);
+// PORTLAND [45.5051, -122.6750]
+// Marker.create(
+// 	{
+// 		lat: 45.5067,
+// 		lng: -122.6747,
+// 		note: 'Remains of dead bees heads here',
+// 		image: 'file_location2',
+// 	}, function(err, createdMarker) {
+// 		if (err) {
+// 			return handleError(err);
+// 		} else {
+// 			console.log(createdMarker);
+// 		}
+// 	}
+// );
+
 
 // connecting route examples
 app.use('/', indexRoutes);

@@ -23,3 +23,8 @@ db.users.find({username: 'name})[0].password -> users password
 - I set up markers Schema, The only thing i couldn't figure out is how to make it accept an imagefield.
     - For now leave it off, as long as I can receive a POST that has everything except image then i can come back to it
 - Loop over markerSchema and for each object, plot the specific data to a marker on the map.
+
+
+
+- LOOK into making our own API that has all the markers
+    - We will use axios to make requests to our API to plot on the map
