@@ -20,3 +20,6 @@ db.users.find({username: 'name})[0].password -> users password
     - Maybe have the user click to get the lat/lng and then have them simply enter in text/file and submit
         - Instead of trying to figure out how to do it alll at the same time.
 
+- I set up markers Schema, The only thing i couldn't figure out is how to make it accept an imagefield.
+    - For now leave it off, as long as I can receive a POST that has everything except image then i can come back to it
+- Loop over markerSchema and for each object, plot the specific data to a marker on the map.

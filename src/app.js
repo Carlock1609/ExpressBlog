@@ -1,15 +1,16 @@
 /**
  * Required External Modules
  */
-const {MongoClient} = require('mongodb');
+// const {MongoClient} = require('mongodb');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
 // importing models
 const User = require('./models/user');
+const Marker = require('./models/markers');
 // importing routes
-const indexRoutes = require('./api/routes/index')
+const indexRoutes = require('./api/routes/index');
 
 // Let express know where to find templates
 // Lets express know what template engine we are using 'ejs'
@@ -32,6 +33,20 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 //         console.log(createdUser)
 //     }
 // })
+Marker.create(
+	{
+		lat: 2,
+		lng: 4,
+		note: 'Hornets here',
+		image: 'file_location',
+	}, function(err, createdMarker) {
+		if (err) {
+			return handleError(err);
+		} else {
+			console.log(createdMarker);
+		}
+	}
+);
 
 // connecting route examples
 app.use('/', indexRoutes);
