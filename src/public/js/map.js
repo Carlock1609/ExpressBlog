@@ -1,6 +1,8 @@
 // REQUIRE is a node.js serverside, Figureout how to get the client side working
-// const mongoose = require('mongoose');
-// const markerDB = require('./models/markers');
+const mongoose = require('mongoose');
+const getMarkerSchema = require('../../models/markers');
+
+console.log(getMarkerSchema)
 
 // WORK ON DISPLAYING THE SEEDED DATA FIRST, THEN FIGURE OUT HOW TO GET THE USER INPUT
 
@@ -14,11 +16,18 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
 }).addTo(mymap);
 
+
+// find all athletes who play tennis, selecting the 'name' and 'age' fields
+// Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
+//   if (err) return handleError(err);
+//   // 'athletes' contains the list of athletes that match the criteria.
+// })
 // SEEDING DATA
-// for(let marker in markerDB) {
-//     console.log(marker)
-//     // let placeMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
-// }
+for(let marker in getMarkerSchema.find()) {
+    console.log(marker)
+    console.log('hello')
+    // let placeMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+}
 
 //  FIGURE OUT IF THE REST NEEDS TO BE IN THE ROUTE TO SAVE THE MARKERS
 // OTHERWISE HAVE USERS INPUT DATA, THEN USE ANOTHER FUNCTION TO DISPLAY THAT DATA,
