@@ -50,6 +50,16 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 // 	}
 // );
 
+// THIS IS WHAT I NEED ON MAP.JS
+// console.log(Marker.find().then((marks) => {
+// 	for(let mark of marks) {
+// 		console.log(mark.lat)
+// 	}
+// }).catch((err) => {
+// 	console.log(err)
+// })
+// )
+
 
 // connecting route examples
 app.use('/', indexRoutes);

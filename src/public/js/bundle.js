@@ -1565,7 +1565,13 @@ f.ValidationError=u,t.exports=f}])});
 const mongoose = require('mongoose');
 const getMarkerSchema = require('../../models/markers');
 
-console.log(getMarkerSchema)
+console.log('type is ' + typeof getMarkerSchema)
+
+console.log('calling the function...')
+getMarkerSchema({}, function(req, res) {
+    console.log(res)
+    console.log(req)
+})
 
 // WORK ON DISPLAYING THE SEEDED DATA FIRST, THEN FIGURE OUT HOW TO GET THE USER INPUT
 
@@ -1586,11 +1592,54 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 //   // 'athletes' contains the list of athletes that match the criteria.
 // })
 // SEEDING DATA
-for(let marker in getMarkerSchema.find()) {
-    console.log(marker)
-    console.log('hello')
-    // let placeMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
-}
+ 
+// for(let marker in getMarkerSchema.find()) {
+//     console.log(marker)
+//     console.log('hello')
+//     // let placeMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+// }
+// getMarkerSchema.find().then((marker) => {
+//     console.log({marker})
+// }).catch((err) => {
+//     console.log(err)
+// })
+// THIS SAYS ITS NOT A FUNCTION BUT WHEN DOING TYPEOF IT IS
+getMarkerSchema.find()
+    .then((markers) => {
+        for(let marker of markers) {
+            console.log(marker)
+        }
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+// console.log(Marker.find().then((marks) => {
+// 	for(let mark of marks) {
+// 		console.log(mark.lat)
+// 	}
+// }).catch((err) => {
+// 	console.log(err)
+// })
+// )
+// StackoverFlow ideas
+// User.find().then((users)=>{
+//     res.send({users});
+//      }).catch((err)=>{
+//        res.status(400).send(err);
+//       });
+// YelpCamp Example for making queries
+
+// INDEX ROUTE
+// router.get('/', function(req, res) {
+// 	console.log(req.user)
+// 	Campground.find({}, function(err, allCampgrounds) {
+// 		if(err) {
+// 			console.log(err)
+// 		} else {
+// 			res.render('campgrounds/index', {campgrounds: allCampgrounds, currentUser: req.user});
+// 		}
+// 	})
+// });
 
 //  FIGURE OUT IF THE REST NEEDS TO BE IN THE ROUTE TO SAVE THE MARKERS
 // OTHERWISE HAVE USERS INPUT DATA, THEN USE ANOTHER FUNCTION TO DISPLAY THAT DATA,
