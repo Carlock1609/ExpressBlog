@@ -2,6 +2,8 @@
 // const mongoose = require('mongoose');
 // const getMarkerSchema = require('../../models/markers');
 
+// import { set } from "mongoose";
+
 // console.log('type is ' + typeof getMarkerSchema)
 
 // console.log('calling the function...')
@@ -43,10 +45,19 @@ function onMapClick(e) {
 }
 mymap.on('click', onMapClick);
 
+// Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
 let allMarkers = document.querySelector('#allMarkers');
+setTimeout(() => {
+    let showObject = allMarkers.value
+    console.log(showObject)
+}, 8000)
+// async function promisedMarkers() {
+//     let showObject = await allMarkers.value 
+//     showObject.
+//     return showObject
+// }
 
-let showObject = allMarkers.value
-console.log(showObject)
+
 // find all athletes who play tennis, selecting the 'name' and 'age' fields
 // Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
 //   if (err) return handleError(err);
