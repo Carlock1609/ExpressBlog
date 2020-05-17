@@ -6,6 +6,17 @@
       <!-- <div id="mapdiv"></div> -->
   </div>
 
+  <!-- Transfer information from a click on the map, to the form below -->
+
+  <h1>Information from Map click to store in DB.</h1>
+  <form id="markerForm" action="/" method='POST'>
+    <input id="lat" type="text" name='lat'>
+    <input id="lng" type="text" name='lng'>
+    <input id="note" type="text" name='note'>
+    <!-- ASAP make this accept images -->
+    <input id="image" type="text" name='image'>
+    <button type='submit'>Submit</button>
+  </form>
 
 <%- include('partials/footer') %>
 

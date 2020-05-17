@@ -1,16 +1,18 @@
 // REQUIRE is a node.js serverside, Figureout how to get the client side working
-const mongoose = require('mongoose');
-const getMarkerSchema = require('../../models/markers');
+// const mongoose = require('mongoose');
+// const getMarkerSchema = require('../../models/markers');
 
-console.log('type is ' + typeof getMarkerSchema)
+// console.log('type is ' + typeof getMarkerSchema)
 
-console.log('calling the function...')
-getMarkerSchema({}, function(req, res) {
-    console.log(res)
-    console.log(req)
-})
+// console.log('calling the function...')
+// getMarkerSchema({}, function(req, res) {
+//     console.log(res)
+//     console.log(req)
+// })
 
 // WORK ON DISPLAYING THE SEEDED DATA FIRST, THEN FIGURE OUT HOW TO GET THE USER INPUT
+
+
 
 // INITIALIZE map
 let mymap = L.map('mapid').setView([45.5051, -122.6750], 13);
@@ -22,6 +24,24 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
 }).addTo(mymap);
 
+// Form handling to routes
+// Figuring out how to select individual inputs
+
+function onMapClick(e) {
+    let lat = document.querySelector('#lat')
+    let lng = document.querySelector('#lng')
+
+    let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+    // let user_input = prompt('Please enter in a message');
+    // What if we display the Street or the city instead of latlng
+    marker.bindPopup(`CLICKED @ ` + e.latlng.toString()).openPopup();
+    // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
+    lng.setAttribute('value', `${e.latlng.lat}`)
+    lat.setAttribute('value', `${e.latlng.lng}`)
+    lng.setAttribute('placeholder', `${e.latlng.lat}`)
+    lat.setAttribute('placeholder', `${e.latlng.lng}`)
+}
+mymap.on('click', onMapClick);
 
 // find all athletes who play tennis, selecting the 'name' and 'age' fields
 // Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
@@ -41,15 +61,17 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 //     console.log(err)
 // })
 // THIS SAYS ITS NOT A FUNCTION BUT WHEN DOING TYPEOF IT IS
-getMarkerSchema.find()
-    .then((markers) => {
-        for(let marker of markers) {
-            console.log(marker)
-        }
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+// getMarkerSchema.find()
+//     .then((markers) => {
+//         for(let marker of markers) {
+//             console.log(marker)
+//         }
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     })
+
+
 // console.log(Marker.find().then((marks) => {
 // 	for(let mark of marks) {
 // 		console.log(mark.lat)
@@ -58,6 +80,8 @@ getMarkerSchema.find()
 // 	console.log(err)
 // })
 // )
+
+
 // StackoverFlow ideas
 // User.find().then((users)=>{
 //     res.send({users});
@@ -81,11 +105,11 @@ getMarkerSchema.find()
 //  FIGURE OUT IF THE REST NEEDS TO BE IN THE ROUTE TO SAVE THE MARKERS
 // OTHERWISE HAVE USERS INPUT DATA, THEN USE ANOTHER FUNCTION TO DISPLAY THAT DATA,
 // INSTEAD OF USING THE ONCLICK AND SAVING DATA
-function onMapClick(e) {
-    let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
-    let user_input = prompt('Please enter in a message');
-    // What if we display the Street or the city instead of latlng
-    marker.bindPopup(`${user_input} @ ` + e.latlng.toString()).openPopup();
-    // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
-}
-mymap.on('click', onMapClick);
+// function onMapClick(e) {
+//     let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+//     let user_input = prompt('Please enter in a message');
+//     // What if we display the Street or the city instead of latlng
+//     marker.bindPopup(`${user_input} @ ` + e.latlng.toString()).openPopup();
+//     // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
+// }
+// mymap.on('click', onMapClick);
