@@ -18,5 +18,13 @@
     <button type='submit'>Submit</button>
   </form>
 
+  <!-- Displaying all markers -->
+  <div id="allMarkers" value="`<%= markers %>"></div>
+  <ul>
+    <% for(let marker of markers) { %>
+      <li><%= marker %></li>
+    <% } %>
+  </ul>
+
 <%- include('partials/footer') %>
 

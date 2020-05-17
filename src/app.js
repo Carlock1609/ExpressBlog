@@ -6,9 +6,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-// importing models
-const User = require('./models/user');
-const Marker = require('./models/markers');
 // importing routes
 const indexRoutes = require('./api/routes/index');
 

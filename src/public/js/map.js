@@ -28,21 +28,25 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // Figuring out how to select individual inputs
 
 function onMapClick(e) {
-    let lat = document.querySelector('#lat')
-    let lng = document.querySelector('#lng')
+    let lat = document.querySelector('#lat');
+    let lng = document.querySelector('#lng');
 
     let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
     // let user_input = prompt('Please enter in a message');
     // What if we display the Street or the city instead of latlng
     marker.bindPopup(`CLICKED @ ` + e.latlng.toString()).openPopup();
     // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
-    lng.setAttribute('value', `${e.latlng.lat}`)
-    lat.setAttribute('value', `${e.latlng.lng}`)
-    lng.setAttribute('placeholder', `${e.latlng.lat}`)
-    lat.setAttribute('placeholder', `${e.latlng.lng}`)
+    lng.setAttribute('value', `${e.latlng.lat}`);
+    lat.setAttribute('value', `${e.latlng.lng}`);
+    lng.setAttribute('placeholder', `${e.latlng.lat}`);
+    lat.setAttribute('placeholder', `${e.latlng.lng}`);
 }
 mymap.on('click', onMapClick);
 
+let allMarkers = document.querySelector('#allMarkers');
+
+let showObject = allMarkers.value
+console.log(showObject)
 // find all athletes who play tennis, selecting the 'name' and 'age' fields
 // Athlete.find({ 'sport': 'Tennis' }, 'name age', function (err, athletes) {
 //   if (err) return handleError(err);

@@ -5,20 +5,24 @@ const getMarkerSchema = require('../../models/markers');
 
 router.get('/', function(req,res) {
 // Trying to figure out how to pass in map to display
-    markers = getMarkerSchema.find()
-    // Request testing
-    console.log(req.body)
-
-    context = {
-        'markers': markers,
+    async function displayAllMarkers() {
+        const getAllMarkers = await getMarkerSchema.find()
+        return getAllMarkers;
     }
 
-    res.render('index', context)
-})
+    markers = displayAllMarkers();
+    res.render('/', {markers=markers});
+});
+// console.log(Marker.find().then((marks) => {
+// 	for(let mark of marks) {
+// 		console.log(mark.lat)
+// 	}
+// }).catch((err) => {
+// 	console.log(err)
+// })
+// )
 
-router.post('/', function(req,res) {
-    markers = getMarkerSchema.find();
-    
+router.post('/', function(req,res) {    
     let lat = req.body.lat;
     let lng = req.body.lng;
     let note = req.body.note;
@@ -35,9 +39,7 @@ router.post('/', function(req,res) {
     });
     
     res.redirect('/');
-    
 })
-
 
 module.exports = router;
 
