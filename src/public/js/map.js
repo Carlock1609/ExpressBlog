@@ -49,14 +49,10 @@ mymap.on('click', onMapClick);
 // Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
 // Figure out how to turn string into a JSON or dictionary
 let allMarkers = document.querySelector('#allMarkers');
-setTimeout(() => {
-    console.log(allMarkers.getAttribute('value'));
-    let markers = JSON.parse(allMarkers.getAttribute('value'));
-    for(let marker of markers) {
-        console.log(`Marker -- ${marker.lat}`);
-    }
-
-}, 5000)
+allMarkers.getAttribute('value');
+// setTimeout(() => {
+//     let markers = JSON.stringify(allMarkers.getAttribute('value'));
+// }, 5000)
 
 // async function displayMarker() {
 //     let markers = allMarkers.innerHTML(allMarkers.value)

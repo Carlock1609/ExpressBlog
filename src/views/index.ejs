@@ -1,26 +1,53 @@
 
 <%- include('partials/header') %>
 
+
   <div class="container-fluid text-center">
-      <div id="mapid"></div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div id="mapid"></div>
+      </div>
       <!-- <div id="mapdiv"></div> -->
+      <div id="formDiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h1>Submit your Murder Hornet Sightings!</h1>
+        <form id="markerForm" action="/" method='POST'>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <label for="lat">Lat: </label>
+              <input id="lat" type="text" name='lat'>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <label for="lng">Lng: </label>
+              <input id="lng" type="text" name='lng'>
+            </div>
+            <div class="col-12">
+              <textarea id="note" type="text" name='note' rows="3" cols="45"></textarea>
+            </div>
+            <div class="col-12 text-center"></div>
+              <!-- ASAP make this accept images -->
+              <input class="ml-5" id="image" type="file" name='image'>
+            </div>
+            <button class="btn btn-outline-dark" type='submit'>Submit</button>
+          </form>
+          
+          <!-- Displaying all markers -->
+          <div id="allMarkers" value="<%= markers %>"></div>
+          <ul>
+            <% for(let marker of markers) { %>
+              <li>ID: <%= marker._id %></li>
+              <li>Lng: <%= marker.lat %>   Lat: <%= marker.lat %></li>
+              <li><%= marker.note %></li>
+              <li><%= marker.image %></li>
+              <br>
+              <% } %>
+            </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Transfer information from a click on the map, to the form below -->
-
-  <h1>Information from Map click to store in DB.</h1>
-  <form id="markerForm" action="/" method='POST'>
-    <input id="lat" type="text" name='lat'>
-    <input id="lng" type="text" name='lng'>
-    <input id="note" type="text" name='note'>
-    <!-- ASAP make this accept images -->
-    <input id="image" type="text" name='image'>
-    <button type='submit'>Submit</button>
-  </form>
-
-  <!-- Displaying all markers -->
-  <div id="allMarkers" value="<%= markers %>"></div>
-  <h1><%= markers %></h1>
 
 
 <%- include('partials/footer') %>

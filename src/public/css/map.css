@@ -1,4 +1,30 @@
 #mapid {
+    border: 5px solid rgb(109, 109, 109);
+    box-shadow: 3px 3px 3px 3px rgb(109, 109, 109, .40);
     height: 50vh;
+    width: 100%;
     margin-top: 10px;
+}
+
+#markerForm {
+    border: 2px solid rgb(109, 109, 109);
+    padding: 5px;
+}
+
+#markerForm input {
+    width: 50%;
+}
+@media screen and (min-width: 700px) {
+    #mapid {
+        border: 5px solid rgb(109, 109, 109);
+        box-shadow: 3px 3px 3px 3px rgb(109, 109, 109, .40);
+        height: 90vh;
+        margin-top: 10px;
+        width: 100%;
+      
+    }
+    #markerForm {
+        border: 2px solid rgb(109, 109, 109);
+        padding: 5px;
+    }
 }
