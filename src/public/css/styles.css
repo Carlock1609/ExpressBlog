@@ -1,9 +1,16 @@
 body, html {
    height: 100%;
    font-family: 'Sriracha', cursive;
+   background-color: #feffc1;
 
 }
 
-h1 {
-    color: rgb(109, 109, 109);
+h4 {
+    color: rgb(39, 39, 39);
+}
+#jumbotron {
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    background: rgba(39, 39, 39, 0.637);
+    height: 30px;
 }

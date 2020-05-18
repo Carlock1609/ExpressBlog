@@ -1,13 +1,14 @@
 #mapid {
-    border: 5px solid rgb(109, 109, 109);
-    box-shadow: 3px 3px 3px 3px rgb(109, 109, 109, .40);
+    border: 1px solid rgb(151, 151, 151);
+    box-shadow: 4px 4px 10px 5px rgb(109, 109, 109, .40);
     height: 50vh;
     width: 100%;
     margin-top: 10px;
 }
 
 #markerForm {
-    border: 2px solid rgb(109, 109, 109);
+    border: 2px solid rgb(39, 39, 39);
+    box-shadow: 4px 4px 10px 5px rgb(109, 109, 109, .40);
     padding: 5px;
 }
 
@@ -16,15 +17,15 @@
 }
 @media screen and (min-width: 700px) {
     #mapid {
-        border: 5px solid rgb(109, 109, 109);
-        box-shadow: 3px 3px 3px 3px rgb(109, 109, 109, .40);
+        border: 1px solid rgb(151, 151, 151);
+        box-shadow: 4px 4px 10px 5px rgb(109, 109, 109, .40);
         height: 90vh;
         margin-top: 10px;
         width: 100%;
       
     }
     #markerForm {
-        border: 2px solid rgb(109, 109, 109);
+        border: 2px solid rgb(39, 39, 39);
         padding: 5px;
     }
 }

@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 // importing routes
 const indexRoutes = require('./api/routes/index');
+const aboutRoutes = require('./api/routes/about');
 
 // Let express know where to find templates
 // Lets express know what template engine we are using 'ejs'
@@ -60,7 +61,7 @@ mongoose.connect('mongodb://localhost/MurderBeeTracker', {
 
 // connecting route examples
 app.use('/', indexRoutes);
-// app.use('/campgrounds', campgroundRoutes);
+app.use('/about', aboutRoutes);
 // app.use('/campgrounds/:id/comments', commentRoutes);
 
 

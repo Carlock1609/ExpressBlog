@@ -1,21 +1,21 @@
 
 .navbar {
-    background-color: #fdff74;
+    background-color: #fdff7400;
     font-family: 'Noto Sans', sans-serif;
 }
 .navbar-brand {
-    color: rgb(109, 109, 109)!important;
+    color: rgb(39, 39, 39)!important;
 }
 
 #navLink {
     border: 0px;
     background: rgb(0,0,0,0);
-    color: rgb(109, 109, 109);
+    color: rgb(39, 39, 39);
     outline: none;
 }
 #navLink:hover {
     transition: .5s;
-    color: rgb(109, 109, 109);
+    color: rgb(39, 39, 39);
 }
 #navLink:active {
     transform: translatey(-1px);
