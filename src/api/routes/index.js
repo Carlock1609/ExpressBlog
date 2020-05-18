@@ -4,19 +4,33 @@ const router = express.Router();
 const getMarkerSchema = require('../../models/markers');
 
 router.get('/', function(req,res) {
-    async function displayAllMarkers() {
-        const allMarkers = await getMarkerSchema.find();
-        const markers = Promise.all([allMarkers]);
-        
-        return markers
-    };
-    const markers = displayAllMarkers()
-    // TESTING PROMISE - IT WORKS
-    setTimeout(() => {
-        console.log(markers)
-    }, 5000)
-    res.render('index', {markers:markers});
+    // Synchronous V1 - THIS WORKED DONT TOUCH
+    getMarkerSchema.find()
+        .then((markers) => {
+            res.render('index', {markers:markers});
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
+
+
+    // Asynchronous V1
+    // async function displayAllMarkers() {
+    //     const allMarkers = getMarkerSchema.find();
+    //     const markers = await allMarkers;
+    //     setTimeout(() => {
+    //         console.log(markers.results[0])
+    //     }, 5000)
+    //     return markers;
+    // };
+    // const markers = displayAllMarkers()
+    // // TESTING PROMISE - IT WORKS
+    // setTimeout(() => {
+    //     console.log(markers)
+    // }, 5000)
+    // res.render('index', {markers:markers});
+
     // THIS WILL RUN IN ORDER, AWAIT MEANS IT WILL NOT MOVE ON UNTIL ITS RESOLVED, TEHY ARE GETTING SENT ONE AT A TIME AND ONCE RETURNED
 
 
