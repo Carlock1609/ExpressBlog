@@ -1,18 +1,4 @@
-// REQUIRE is a node.js serverside, Figureout how to get the client side working
-// const mongoose = require('mongoose');
-// const getMarkerSchema = require('../../models/markers');
-
-// console.log('type is ' + typeof getMarkerSchema)
-
-// console.log('calling the function...')
-// getMarkerSchema({}, function(req, res) {
-//     console.log(res)
-//     console.log(req)
-// })
-
 // WORK ON DISPLAYING THE SEEDED DATA FIRST, THEN FIGURE OUT HOW TO GET THE USER INPUT
-
-
 
 // INITIALIZE map
 let mymap = L.map('mapid').setView([45.5051, -122.6750], 13);
@@ -24,35 +10,39 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
 }).addTo(mymap);
 
-// Form handling to routes
-// Figuring out how to select individual inputs
+
+// Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
+// THIS WORKS. It needed to be stringify on render before we could parse it.
+let allMarkers = document.querySelector('#allMarkers');
+let getValue = allMarkers.getAttribute("value")
+let response = JSON.parse(getValue)
+
+// Figure out how to loop
+function displayMarkers() {
+    for(let marker of response) {
+        console.log(marker.lat)
+        let showMarker = L.marker([marker.lat, marker.lng]).addTo(mymap);
+        showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`).openPopup();
+    }
+}
+displayMarkers()
 
 function onMapClick(e) {
     let lat = document.querySelector('#lat');
     let lng = document.querySelector('#lng');
-
+    console.log(e.latlng)
     let marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
     // let user_input = prompt('Please enter in a message');
     // What if we display the Street or the city instead of latlng
     marker.bindPopup(`CLICKED @ ` + e.latlng.toString()).openPopup();
     // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
-    lng.setAttribute('value', `${e.latlng.lat}`);
-    lat.setAttribute('value', `${e.latlng.lng}`);
-    lng.setAttribute('placeholder', `${e.latlng.lat}`);
-    lat.setAttribute('placeholder', `${e.latlng.lng}`);
+    lat.setAttribute('value', `${e.latlng.lat}`);
+    lng.setAttribute('value', `${e.latlng.lng}`);
+    lat.setAttribute('placeholder', `${e.latlng.lat}`);
+    lng.setAttribute('placeholder', `${e.latlng.lng}`);
 }
 mymap.on('click', onMapClick);
 
-
-// Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
-// Figure out how to turn string into a JSON or dictionary
-let allMarkers = document.querySelector('#allMarkers');
-// allMarkers.getAttribute('value');
-let getValue = allMarkers.getAttribute('value')
-let getString = JSON.stringify(getValue)
-let markers = JSON.parse(getString)
-// console.log(getString.lat)
-console.log(typeof markers)
 
 // setTimeout(() => {
 //     let markers = JSON.stringify(allMarkers.getAttribute('value'));

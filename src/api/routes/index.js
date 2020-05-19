@@ -5,9 +5,14 @@ const getMarkerSchema = require('../../models/markers');
 
 router.get('/', function(req,res) {
     // Synchronous V1 - THIS WORKED DONT TOUCH
+    //     Now if you want to print the actual JSON, use:
+    // console.log(JSON.stringify(checklist_data));
+    // You were almost there in your code, but you called console.log with not yet serialized object.
+    // edit Ok looking at your code you're better off not deserializing from JSON at all.
     getMarkerSchema.find()
         .then((markers) => {
-            res.render('index', {markers:markers});
+
+            res.render('index', {markers:JSON.stringify(markers)});
         })
         .catch((err) => {
             console.log(err);
