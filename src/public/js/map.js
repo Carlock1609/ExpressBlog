@@ -10,18 +10,27 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
 }).addTo(mymap);
 
-
-// Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
-// THIS WORKS. It needed to be stringify on render before we could parse it.
-let allMarkers = document.querySelector('#allMarkers');
-let getValue = allMarkers.getAttribute("value")
-let response = JSON.parse(getValue)
-
-// Figure out how to loop
+// Figure out if we can make this Asynch
+// Loops over rsponse and palces all the markers
 function displayMarkers() {
+    // THIS WORKS. It needed to be stringify on render before we could parse it.
+    let allMarkers = document.querySelector('#allMarkers');
+    let getValue = allMarkers.getAttribute("value")
+    let response = JSON.parse(getValue)
+
+    // THIS WORKS JUST ADD IT TO THE FORLOOP, ONCE YOU FIX THE SCHEMA TO ACCEPT IT
+    
     for(let marker of response) {
-        console.log(marker.lat)
-        let showMarker = L.marker([marker.lat, marker.lng]).addTo(mymap);
+        let selectedIcon = L.icon({
+            iconUrl: `${marker.image}`,
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+            // shadowUrl: 'my-icon-shadow.png',
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+        let showMarker = L.marker([marker.lat, marker.lng], {icon: selectedIcon}).addTo(mymap);
         showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`).openPopup();
     }
 }

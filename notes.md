@@ -28,3 +28,7 @@ db.users.find({username: 'name})[0].password -> users password
 
 - LOOK into making our own API that has all the markers
     - We will use axios to make requests to our API to plot on the map
+
+
+- Think about adding an Icon to the schema, This will let the User use a drop down to select which Icon they want to display when marked.
+    - Dead bee Icon, Hornet Icon, Nest Icon, etc,.

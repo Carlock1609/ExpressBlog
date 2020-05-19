@@ -10,7 +10,7 @@
       <!-- <div id="mapdiv"></div> -->
       <div id="formDiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h4>Help us Track Murder Hornets!</h4>
-        <h4>Save <u>Lives,</u> Save <u>Bees</u> <span><img src="../images/CuteBee.png" alt="" height="40px" height="40px"></span></h4>
+        <h4><span><img src="../images/NiceHornet.png" alt="" height="40px" height="40px"></span> Save <u>Lives,</u> Save <u>Bees</u> <span><img src="../images/cute_bee1.png" alt="" height="40px" height="40px"></span></h4>
         
         <form id="markerForm" action="/" method='POST'>
           <div class="row">
@@ -25,16 +25,23 @@
             <div class="col-12">
               <textarea id="note" type="text" name='note' rows="3" cols="45"></textarea>
             </div>
-            <div class="col-12 text-center"></div>
-              <!-- ASAP make this accept images -->
-              <input class="ml-5" id="image" type="file" name='image'>
+            <div class="col-12">
+              <select name="image" id="image">
+                <option value="./images/dead_bee.png">Dead Bees</option>
+                <option value="./images/MadHornet.png">Hornet Sighting</option>
+                <option value="./images/wasp_nest1.png">Hornets Nest</option>
+              </select>
             </div>
-            <button class="btn btn-outline-dark" type='submit'>Submit</button>
+            <div class="col-12">
+              <button class="btn btn-outline-dark mt-3" type='submit'>Submit</button>
+
+            </div>
+          </div>
           </form>
           
           <!-- Displaying all markers -->
           <br>
-          <p>Test Data</p>
+          <p>Display Data? Or display Pictures and factiods about MH</p>
           <div id="allMarkers" value="<%= markers %>"></div>
         </div>
       </div>
