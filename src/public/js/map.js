@@ -11,21 +11,20 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 // Figure out if we can make this Asynch
-// Loops over rsponse and palces all the markers
+// Loops over response and places all the markers
 function displayMarkers() {
     // THIS WORKS. It needed to be stringify on render before we could parse it.
     let allMarkers = document.querySelector('#allMarkers');
     let getValue = allMarkers.getAttribute("value")
     let response = JSON.parse(getValue)
 
-    // THIS WORKS JUST ADD IT TO THE FORLOOP, ONCE YOU FIX THE SCHEMA TO ACCEPT IT
-    
     for(let marker of response) {
         let selectedIcon = L.icon({
             iconUrl: `${marker.image}`,
-            iconSize: [38, 95],
-            iconAnchor: [22, 94],
+            iconSize: [30, 50],
+            iconAnchor: [10, 50],
             popupAnchor: [-3, -76],
+
             // shadowUrl: 'my-icon-shadow.png',
             shadowSize: [68, 95],
             shadowAnchor: [22, 94]
