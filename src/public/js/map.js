@@ -2,8 +2,6 @@
 // const mongoose = require('mongoose');
 // const getMarkerSchema = require('../../models/markers');
 
-// import { set } from "mongoose";
-
 // console.log('type is ' + typeof getMarkerSchema)
 
 // console.log('calling the function...')
@@ -49,7 +47,13 @@ mymap.on('click', onMapClick);
 // Check previous code at this point, I got a little confused. I injected the promise, but now were trying to asynchronally display the data when it gets here
 // Figure out how to turn string into a JSON or dictionary
 let allMarkers = document.querySelector('#allMarkers');
-allMarkers.getAttribute('value');
+// allMarkers.getAttribute('value');
+let getValue = allMarkers.getAttribute('value')
+let getString = JSON.stringify(getValue)
+let markers = JSON.parse(getString)
+// console.log(getString.lat)
+console.log(typeof markers)
+
 // setTimeout(() => {
 //     let markers = JSON.stringify(allMarkers.getAttribute('value'));
 // }, 5000)

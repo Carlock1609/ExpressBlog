@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 // Sets base directory to look for static files
 app.use(express.static(__dirname + '/public')); 
 // I think were going to want to change the name of DB, just come back to this when resetting
-mongoose.connect('mongodb://localhost/MurderBeeTracker', { 
+mongoose.connect('mongodb://localhost/MurderHornetTracking', { 
 													useNewUrlParser: true,
 													useUnifiedTopology: true,
 														});

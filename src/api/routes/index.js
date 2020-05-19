@@ -47,7 +47,7 @@ router.post('/', function(req,res) {
     let note = req.body.note;
     let image = req.body.image;
 
-    let newMarker = getMarkerSchema.create(lat=lat, lng=lng, note=note, image=image);
+    let newMarker = {lat:lat, lng:lng, note:note, image:image};
 
     getMarkerSchema.create(newMarker, function(err, newlyCreated) {
         if(err) {
