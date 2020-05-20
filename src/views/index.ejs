@@ -11,7 +11,7 @@
       <div id="formDiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h4>Help us Track Murder Hornets!</h4>
         <h4><span><img src="../images/NiceHornet.png" alt="" height="40px" height="40px"></span> Save <u>Lives,</u> Save <u>Bees</u> <span><img src="../images/cute_bee1.png" alt="" height="40px" height="40px"></span></h4>
-        
+        <h4>Click on on the map to get Started!</h4>  
         <form id="markerForm" action="/" method='POST'>
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -49,6 +49,20 @@
 
           <!-- THIS IS WHERE THE DB IS DROPPING ALL THE DATA -->
           <div id="allMarkers" value="<%= markers %>"></div>
+
+          
+          <!-- CONTACT MODAL -->
+           <div id="myModal" class="modal"> 
+            <!-- Modal content -->
+             <div class="modal-content">
+              <span class="close">&times;</span>
+             
+                <a href="mailto: pestprogram@agr.wa.gov?subject=Murder Hornets!&body=I saw Murder Hornets at this exact location!"><button class="btn btn-outline-light mt-5 mb-5">Email</button></a>
+              <h4 id="contactWords">To report an Asian Giant Hornet sighting, contact the Washington State Department of Agriculture Pest Program at 1‑800‑443‑6684</h4>
+              <h4 id="contactWords">For questions about protecting honey bees from hornets, contact WSU Extension scientist Tim Lawrence at (360) 639-6061</h4>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

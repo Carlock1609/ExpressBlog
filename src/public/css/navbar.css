@@ -28,3 +28,11 @@
     padding-right: 20px;
     opacity: 1;
 }
+
+
+#jumbotron {
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    background: rgba(39, 39, 39, 0.637);
+    height: 30px;
+}
