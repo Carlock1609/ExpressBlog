@@ -23,11 +23,11 @@ function displayMarkers() {
             iconUrl: `${marker.image}`,
             iconSize: [30, 50],
             iconAnchor: [10, 50],
-            popupAnchor: [-3, -76],
+            popupAnchor: [5, -45],
 
-            // shadowUrl: 'my-icon-shadow.png',
+            shadowUrl: '../images/Shadow1.png',
             shadowSize: [68, 95],
-            shadowAnchor: [22, 94]
+            shadowAnchor: [27, 65]
         });
         let showMarker = L.marker([marker.lat, marker.lng], {icon: selectedIcon}).addTo(mymap);
         showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`).openPopup();

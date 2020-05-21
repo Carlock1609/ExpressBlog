@@ -1,0 +1,26 @@
+
+<%- include('partials/header') %>
+
+<div id="registerForm" class="container shadow-lg text-center mt-3 pb-5 pt-5">
+
+    <div id="centerStuff" class="card mb-3 pb-3" style="max-width: 18rem;">
+        <div class="card-header" id="login_caption">SIGN UP</div>
+            <div class="card-body">
+                <form action="/register" method="POST">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password">
+                    <button class="btn btn-outline-dark mt-3">Register</button>
+                </form>         
+            </div>    
+        </div>    
+    </div>    
+
+
+
+
+</div>
+
+<%- include('partials/footer') %>
+

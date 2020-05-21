@@ -40,3 +40,10 @@ https://news.wsu.edu/2020/04/06/wsu-scientists-enlist-citizens-hunt-giant-bee-ki
 
 To report an Asian Giant Hornet sighting, contact the Washington State Department of Agriculture Pest Program at 1‑800‑443‑6684, pestprogram@agr.wa.gov or online at agr.wa.gov/hornets.
 For questions about protecting honey bees from hornets, contact WSU Extension scientist Tim Lawrence at (360) 639-6061 or timothy.lawrence@wsu.edu.
+
+
+**HOW TO CHECK AUTH OF USER 
+context -
+{campgrounds: allCampgrounds, currentUser: req.user}
+ejs -
+<% if(currentUser && campground.author.id.equals(currentUser._id)) { %>

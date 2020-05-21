@@ -2,16 +2,23 @@
  * Required External Modules
  */
 // const {MongoClient} = require('mongodb');
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
+let express = require('express');
+let app = express();
+let mongoose = require('mongoose');
+let passport = require('passport');
+let flash = require('connect-flash');
+let passport = require('passport');
+let LocalStrategy = require('passport-local');
 
 // importing routes
-const indexRoutes = require('./api/routes/index');
-const aboutRoutes = require('./api/routes/about');
+let indexRoutes = require('./api/routes/index');
+let aboutRoutes = require('./api/routes/about');
 
 // Let express know where to find templates
 // Lets express know what template engine we are using 'ejs'
+
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
 app.set('view engine', 'ejs');
