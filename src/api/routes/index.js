@@ -3,6 +3,11 @@ const router = express.Router();
 const User = require('../../models/user');
 const getMarkerSchema = require('../../models/markers');
 
+// AUTH
+const passport = require('passport');
+const connectEnsureLogin = require('connect-ensure-login');
+
+
 // Get index page
 router.get('/', function(req,res) {
     // Synchronous V1 - THIS WORKED DONT TOUCH
@@ -47,31 +52,28 @@ router.get('/register', function(req,res) {
 
 // Register post
 router.post('/register', function(req,res) {
-    let username = req.body.username;
-    let password = req.body.password;
-
-    let newUser = {username:username, password:password}
-
-    User.create(newUser, function(err, newlyCreated) {
+    User.register(new User({username: req.body.username}), req.body.password, function(err, user) {
         if(err) {
             console.log(err);
-        } else {
-            console.log('Success!' + newlyCreated);
+            return res.render('register');
         }
+        passport.authenticate('local')(req,res, function(){
+            console.log(user)
+            res.redirect('/')
+        });
     });
-    // THIS WILL NEED TO BE FIXED, LOGIN DOES NOT EXIST. OR HAVE THE LOGIN PAGE BE INDEX
-    res.redirect('/');
 })
 
-// Accept login
+// LOGIN ROUTES
+// This is middleware
 router.post('/login', passport.authenticate('local', 
 	{
-		successRedirect: '/campgrounds',
-		failureRedirect: '/login',
+		successRedirect: '/',
+		failureRedirect: '/',
 	}), function(req, res) {
+        // fill this soon
 });
-
-// Logout route
+// // Logout route
 router.get('/logout', function(req,res) {
     req.logout();
     req.flash('success', 'Logged out!');

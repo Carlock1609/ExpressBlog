@@ -1,14 +1,10 @@
-/**
- * Required External Modules
- */
-// const {MongoClient} = require('mongodb');
-let express = require('express');
-let app = express();
-let mongoose = require('mongoose');
-let passport = require('passport');
-let flash = require('connect-flash');
-let passport = require('passport');
-let LocalStrategy = require('passport-local');
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const User = require('./models/user');
+const localStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
+const passport = require('passport');
 
 // importing routes
 // Let express know where to find templates
@@ -20,6 +16,11 @@ let aboutRoutes = require('./api/routes/about');
 app.use(express.json()); //Used to parse JSON bodies
 // Lets express know what template engine we are using 'ejs'
 app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
+app.use(require('express-session')({
+	secret: 'This is the Secret session',
+	resave: false,
+	saveUninitialized: false
+}));
 app.set('view engine', 'ejs');
 // Sets base directory to look for static files
 app.use(express.static(__dirname + '/public')); 
@@ -29,45 +30,23 @@ mongoose.connect('mongodb://localhost/MurderHornetTracking', {
 	useUnifiedTopology: true,
 });
 
-// passport authentication
+// PASSPORT AUTH
+app.use(require('express-session')({
+	secret: 'This is the Secret session',
+	resave: false,
+	saveUninitialized: false
+}));
+
+// let passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
+// PASSPORT LOCAL AUTH
+// passport.use(User.createStrategy());
+passport.use(new localStrategy(User.authenticate()))
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
-
-// SEEDING WORKS
-// User.create({username: 'Carlock', password: 'Yates906'}, function (err, createdUser) {
-//     if (err) {
-//         return handleError(err)
-//     } else {
-//         console.log(createdUser)
-//     }
-// })
-// PORTLAND [45.5051, -122.6750]
-// Marker.create(
-// 	{
-// 		lat: 45.5067,
-// 		lng: -122.6747,
-// 		note: 'Remains of dead bees heads here',
-// 		image: 'file_location2',
-// 	}, function(err, createdMarker) {
-// 		if (err) {
-// 			return handleError(err);
-// 		} else {
-// 			console.log(createdMarker);
-// 		}
-// 	}
-// );
-
-// THIS IS WHAT I NEED ON MAP.JS
-// console.log(Marker.find().then((marks) => {
-// 	for(let mark of marks) {
-// 		console.log(mark.lat)
-// 	}
-// }).catch((err) => {
-// 	console.log(err)
-// })
-// )
 
 
 // connecting route examples

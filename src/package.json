@@ -9,14 +9,17 @@
   "author": "Jon Yates",
   "license": "ISC",
   "dependencies": {
+    "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.11",
     "nodemon": "^2.0.3",
     "npm": "^6.14.5",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
   }
 }
