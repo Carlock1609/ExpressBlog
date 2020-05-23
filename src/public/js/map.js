@@ -1,5 +1,3 @@
-// WORK ON DISPLAYING THE SEEDED DATA FIRST, THEN FIGURE OUT HOW TO GET THE USER INPUT
-
 // INITIALIZE map
 let mymap = L.map('mapid').setView([45.5051, -122.6750], 13);
 L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${config.mapboxKey}`, {
@@ -15,8 +13,8 @@ L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 function displayMarkers() {
     // THIS WORKS. It needed to be stringify on render before we could parse it.
     let allMarkers = document.querySelector('#allMarkers');
-    let getValue = allMarkers.getAttribute("value")
-    let response = JSON.parse(getValue)
+    let getValue = allMarkers.getAttribute("value");
+    let response = JSON.parse(getValue);
 
     for(let marker of response) {
         let selectedIcon = L.icon({
@@ -27,7 +25,7 @@ function displayMarkers() {
 
             shadowUrl: '../images/Shadow1.png',
             shadowSize: [68, 95],
-            shadowAnchor: [27, 65]
+            shadowAnchor: [27, 65],
         });
         let showMarker = L.marker([marker.lat, marker.lng], {icon: selectedIcon}).addTo(mymap);
         showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`).openPopup();

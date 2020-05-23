@@ -42,7 +42,7 @@ router.post('/', function(req,res) {
 
 //  Register page
 router.get('/register', function(req,res) {
-    res.render('register')
+    res.render('register');
 })
 
 // Register post
@@ -60,7 +60,7 @@ router.post('/register', function(req,res) {
         }
     });
     // THIS WILL NEED TO BE FIXED, LOGIN DOES NOT EXIST. OR HAVE THE LOGIN PAGE BE INDEX
-    res.redirect('/')
+    res.redirect('/');
 })
 
 // Accept login
@@ -73,10 +73,10 @@ router.post('/login', passport.authenticate('local',
 
 // Logout route
 router.get('/logout', function(req,res) {
-    req.logout()
-    req.flash('success', 'Logged out!')
-    res.redirect('/')
-})
+    req.logout();
+    req.flash('success', 'Logged out!');
+    res.redirect('/');
+});
 
 
 module.exports = router;

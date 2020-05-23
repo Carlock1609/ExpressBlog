@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
-// const User = require('../../models/user');
 
+// Displays about page
 router.get('/', function(req,res) {
-    // Synchronous V1 - THIS WORKED DONT TOUCH
-    res.render('pages/about')
+    res.render('pages/about');
 });
-
-
-
 
 
 

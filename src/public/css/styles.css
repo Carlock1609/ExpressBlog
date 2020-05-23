@@ -133,3 +133,16 @@ h4 {
       padding: 5px;
   }
 }
+
+
+/* login container */
+#loginContainer {
+  background: rgba(39, 39, 39, 0.541);
+}
+
+#loginForm {
+  z-index: 100;
+  padding: 5px;
+  border: 2px solid rgb(39, 39, 39);
+  border-radius: 10px;
+}

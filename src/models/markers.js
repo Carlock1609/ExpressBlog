@@ -4,6 +4,7 @@ const markerSchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
     note: String,
+    // RENAME THIS TO ICON - for the selection on the form
     image: String,
 });
 

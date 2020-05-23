@@ -11,24 +11,28 @@ let passport = require('passport');
 let LocalStrategy = require('passport-local');
 
 // importing routes
+// Let express know where to find templates
 let indexRoutes = require('./api/routes/index');
 let aboutRoutes = require('./api/routes/about');
 
-// Let express know where to find templates
-// Lets express know what template engine we are using 'ejs'
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(express.json()); //Used to parse JSON bodies
+// Lets express know what template engine we are using 'ejs'
 app.use(express.urlencoded({extended: true})); //Parse URL-encoded bodies
 app.set('view engine', 'ejs');
 // Sets base directory to look for static files
 app.use(express.static(__dirname + '/public')); 
 // I think were going to want to change the name of DB, just come back to this when resetting
 mongoose.connect('mongodb://localhost/MurderHornetTracking', { 
-													useNewUrlParser: true,
-													useUnifiedTopology: true,
-														});
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
+
+// passport authentication
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 
 // SEEDING WORKS
