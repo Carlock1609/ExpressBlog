@@ -47,7 +47,7 @@ router.post('/', function(req,res) {
 
 //  Register page
 router.get('/register', function(req,res) {
-    res.render('register');
+    res.render('register', {currentUser:req.user});
 })
 
 // Register post
@@ -76,7 +76,7 @@ router.post('/login', passport.authenticate('local',
 // // Logout route
 router.get('/logout', function(req,res) {
     req.logout();
-    req.flash('success', 'Logged out!');
+    // req.flash('success', 'Logged out!');
     res.redirect('/');
 });
 

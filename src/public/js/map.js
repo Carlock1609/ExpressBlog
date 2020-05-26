@@ -1,3 +1,5 @@
+
+
 // INITIALIZE map
 let mymap = L.map('mapid').setView([45.5051, -122.6750], 13);
 L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${config.mapboxKey}`, {
@@ -137,3 +139,4 @@ mymap.on('click', onMapClick);
 //     // marker.setContent(`${user_input} @ ` + e.latlng.toString()).openPopup()
 // }
 // mymap.on('click', onMapClick);
+

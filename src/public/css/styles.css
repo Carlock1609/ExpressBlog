@@ -135,14 +135,24 @@ h4 {
 }
 
 
-/* login container */
+/* LOGIN CONTAINER */
 #loginContainer {
-  background: rgba(39, 39, 39, 0.541);
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(39, 39, 39, 0.699);
+  z-index: 100;
 }
-
 #loginForm {
+  /* position: absolute; */
+  
   z-index: 100;
   padding: 5px;
   border: 2px solid rgb(39, 39, 39);
   border-radius: 10px;
+}
+#vertCenter {
+  top: 25%;
+  position: relative;
 }

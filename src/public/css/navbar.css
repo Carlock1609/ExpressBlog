@@ -17,8 +17,11 @@
     transition: .5s;
     color: rgb(39, 39, 39);
 }
+
 #navLink:active {
     transform: translatey(-1px);
+    /* Figure out js way of doing this */
+    border-bottom: 1px solid rgb(39, 39, 39);
 }
 #navLink span {
     opacity: 0;
@@ -29,10 +32,13 @@
     opacity: 1;
 }
 
-
 #jumbotron {
     font-family: 'Noto Sans', sans-serif;
     color: white;
     background: rgba(39, 39, 39, 0.637);
     height: 30px;
+}
+
+.act {
+    background: red;
 }

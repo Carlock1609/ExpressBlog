@@ -7,32 +7,39 @@
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3">
         <div id="mapid"></div>
       </div>
-
-      <!-- THIS IS THE MODAL THAT COVERS THE FORM -->
-      <!-- WE MIGHT HAVE TO FIX THE LOGIN TO BE ABLE TO CHECK THE currentUser -->
-      <!-- This might be longish function, We will have to write everything twice, and use if or else -->
-      <!-- <div id="loginContainer">
-        <div class="container text-center">
-          <div id="centerStuff" class="card mb-3 pb-3" style="max-width: 18rem;">
-            <div class="card-header" id="login_caption">SIGN UP
-              <div class="card-body">
-                <form action="/login" method="POST">
-                  <label for="username">Username: </label>
-                  <input type="text" name="username">
-                  <label for="password">Password: </label>
-                  <input type="password" name="password">
-                  <button type="submit" class="btn btn-outline-dark">Login</button>
-                </form>
-              </div>
-            </div>
-          </div>    
-        </div>
-      </div> -->
-
-    
-
       <!-- <div id="mapdiv"></div> -->
       <div id="formDiv" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <!-- THIS IS THE MODAL THAT COVERS THE FORM -->
+      <!-- WE MIGHT HAVE TO FIX THE LOGIN TO BE ABLE TO CHECK THE currentUser -->
+      <!-- This might be longish function, We will have to write everything twice, and use if or else -->
+        <% if(!currentUser) { %>
+          <div id="loginContainer">
+            <div id="vertCenter" class="container text-center">
+              <div id="centerStuff" class="card mb-3 pb-3" style="max-width: 18rem;">
+                <div class="card-header" id="login_caption">SIGN UP
+                  <div class="card-body">
+                    <form action="/login" method="POST">
+                      <label for="username">Username: </label>
+                      <input type="text" name="username">
+                      <label for="password">Password: </label>
+                      <input type="password" name="password">
+      
+                      <div class="row mt-3">
+                        <div class="col-6">
+                          <button type="submit" class="btn btn-outline-dark">Login</button>
+                    </form>
+                        </div>
+                        <div class="col-6">
+                          <a href="/register"><button class="btn btn-outline-dark">Register</button></a>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>    
+            </div>
+          </div>
+        <% } %>
+
         <h4>Help us Track Murder Hornets!</h4>
         <h4><span><img src="../images/NiceHornet.png" alt="" height="40px" height="40px"></span> Save <u>Lives,</u> Save <u>Bees</u> <span><img src="../images/Bee3.png" alt="" height="40px" height="40px"></span></h4>
         <h4>Click on the map to get Started!</h4>  
@@ -62,6 +69,7 @@
             </div>
           </div>
           </form>
+          
           <h4>Logged-in User: <%= currentUser %></h4>
           
           <!-- Displaying all markers -->
