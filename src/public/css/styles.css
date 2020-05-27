@@ -15,6 +15,7 @@ h4 {
 }
 
 
+/* ABOUT PAGE */
 /* IMAGES */
 #infoImg {
     width: 100%;
@@ -111,7 +112,7 @@ h4 {
 
 /* FOOTER */
 #footerContainer {
-  height: 20%;
+  height: 87.5px;
   background: rgb(39, 39, 39);
   color: white;
 }
