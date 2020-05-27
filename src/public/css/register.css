@@ -1,5 +1,5 @@
 #registerForm {
-    
+    height: 73.45%;
 }
 
 /* Login */
@@ -7,6 +7,7 @@
     margin: 0 auto;
     /* float: none; Added */
     margin-bottom: 10px; /* Added */
+    top: 25%;
     box-shadow:
     0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048),

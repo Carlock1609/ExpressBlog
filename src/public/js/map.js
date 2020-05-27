@@ -30,7 +30,8 @@ function displayMarkers() {
             shadowAnchor: [27, 65],
         });
         let showMarker = L.marker([marker.lat, marker.lng], {icon: selectedIcon}).addTo(mymap);
-        showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`).openPopup();
+        // I TOOK .openPopup() out so it doesn't open on refresh
+        showMarker.bindPopup(`${marker.note} @ ${marker.lat}, ${marker.lng}`);
     }
 }
 displayMarkers()
