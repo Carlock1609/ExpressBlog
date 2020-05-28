@@ -2,7 +2,7 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 secret_keys.js
-
+.DS_Store
 ### Node ###
 # Logs
 logs
